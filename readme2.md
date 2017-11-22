@@ -3,7 +3,7 @@
 
 # AM I RUNNING FASTER?
 
-
+![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/Usain-Bolt3.jpg "Running Really Fast")
 
 For those of us who want to increase our running fitness level, running on the track is a classic. A track is rubberized, flat, and comes in very specific sizes ie 400 meters. For my project I looked at runners' data from a 400 meter track to see how people's running fitness levels change over time. This project looks at whether having access to a 400 meter track in Kezar Stadium, San Francisco produces changes in a runners' fitness level.  
 
