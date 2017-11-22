@@ -22,7 +22,7 @@ In order to detect a change in our running fitness level, we want to see if the 
 
 To give a visual example of what a change in someone's fitness would look like consider the following plot of their lap times:
 
-[add sample data plot here]
+![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/data_sim.png "sample data")
 
 As we can see, it looks like there might be a point where his/her completion times have dropped to a lower sustained level. But this is just what are eyes are telling us. We can use an MCMC algorithm to 'prove' that this person is in fact better.
 
