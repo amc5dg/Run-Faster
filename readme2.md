@@ -47,7 +47,7 @@ with runner_model:
   late_mean = StudentT('late_mean',mu=600,sd=10,nu=5)
 ```
 
-Next we set up the distribution of our runner for the MCMC to sample from:
+Next we set up the distribution (called 'times') of our runner for the MCMC to sample from:
 
 ```python
 with runner_model: 
