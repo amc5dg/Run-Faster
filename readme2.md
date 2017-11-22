@@ -1,3 +1,4 @@
+![alt text](https://github.com/amc5dg/Run-Faster/raw/master/images/kezar.png "Picture of Kezar Stadium")
 
 
 # AM I RUNNING FASTER?
