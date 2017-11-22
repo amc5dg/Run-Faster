@@ -18,7 +18,7 @@ The easiest way to think about this is to look at a distribution of your times. 
 
 In order to detect a change in our running fitness level, we want to see if the distributions of my split times change after some number of laps. This was done using probabilistic prgramming in Python's pymc3 library.
 
-[add pic of pymc3]
+![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/pymc3.png "pymc3 logo")
 
 To give a visual example of what a change in someone's fitness would look like consider the following plot:
 
@@ -30,9 +30,6 @@ Let's set up our model:
 
 We have three parameters parameters that we are interest in finding the distributions of:
 
-\mu_level1 \sim T()
-\mu_level2 \sim T()
-\lambda_switchpoint \sim DiscreteUniform()
 
 
 Here we randomly assign where his/her leveling up might occur:
