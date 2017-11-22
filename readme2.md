@@ -20,17 +20,17 @@ In order to detect a change in our running fitness level, we want to see if the 
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/pymc3.png "pymc3 logo")
 
-To give a visual example of what a change in someone's fitness would look like consider the following plot:
+To give a visual example of what a change in someone's fitness would look like consider the following plot of their lap times:
 
 [add sample data plot here]
 
-As we can see, it looks like there might be a point where his/her completion times have dropped to a lower sustained level. But this is just what are eyes are telling us. We can use bayesian statistics to 'prove' that this person is in fact better.
+As we can see, it looks like there might be a point where his/her completion times have dropped to a lower sustained level. But this is just what are eyes are telling us. We can use an MCMC algorithm to 'prove' that this person is in fact better.
 
-Let's set up our model:
+Let's set up our model.
 
 We have three parameters parameters that we are interest in finding the distributions of:
 
-
+![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/CodeCogsEqn%20(2).gif "equation 1")
 
 Here we randomly assign where his/her leveling up might occur:
 
@@ -39,7 +39,7 @@ with runner_model:
   switchpoint = DiscreteUniform('switchpoint',lower=0, upper=attempts)
 ```
 
-Here we specify a distribution for his/her split times. Since the times they can run is mostly likely normally distributed [add caveats an further details about this here ex) 'this may be overly simplistic']. However; since life happens when we are out running (like seeing a friend out and about and stopping to have a chat but forgetting that you're on the clock), there is a highlikelihood that outliers may occur. So we fit the model with a Student T distribution instead to account for this.
+Here we specify a distribution for his/her split times. Since the times they can run is mostly likely normally distributed [add caveats an further details about this here ex) 'this may be overly simplistic']. However; since life happens when we are out running (like seeing a friend out and about and stopping to have a chat but forgetting that you're on the clock), there is a highlikelihood that outliers may occur. So we fit the model with a Student T distribution instead to account for this:
 
 ```python
 with runner_model:  
@@ -47,13 +47,25 @@ with runner_model:
   late_mean = StudentT('late_mean',mu=600,sd=10,nu=5)
 ```
 
+Next we set up the distribution of our runner for the MCMC to sample from:
 
+```python
+with runner_model: 
+  rate = switch(switchpoint >= np.arange(attempts),early_mean,late_mean)
+  times = StudentT('times',mu=rate,sd=10,nu=5,observed=data)
+```
+And finally setting up the sampler. Note that we use MAP to set the initial locations of each chain
 
+```python
+with runner_model:
+  startvals = find_MAP(model=runner_model)
+  trace = pm.sample(10000,start=startvals,njobs=10)
+  ```
 
-
+Let's see what it looks like:
 
 [add sample traceplot here]
 
-Let's break down what we're looking at. At the upper left we see the distribution for his/her laps before they leveled up. And right below that plot we see the distribution of their level 2 times. And then below that we see the distribution of the switchpoint  
+Let's break down what we're looking at. At the upper left we see the distribution for his/her laps before they leveled up. And right below that plot we see the distribution of their level 2 times. And then below that we see the distribution of the when the switch occured. (To see a more technical breakdown see the <filename> file)  
 
 
