@@ -64,7 +64,7 @@ with runner_model:
 
 Let's see what it looks like:
 
-[add sample traceplot here]
+![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/data_sim_tr.png "sample traceplot")
 
 Let's break down what we're looking at. At the upper left we see the distribution for his/her laps before they leveled up. And right below that plot we see the distribution of their level 2 times. And then below that we see the distribution of the when the switch occured. (To see a more technical breakdown see the <filename> file)  
 
