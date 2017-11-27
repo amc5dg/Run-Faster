@@ -82,7 +82,7 @@ Let's break down what we're looking at. At the upper left we see the distributio
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/switchpoint_100.png "switchpoint <= 100")
 
-![alt text(https://github.com/amc5dg/Run-Faster/blob/master/images/switchpoint_200.png "switchpoint <= 200")
+![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/switchpoint_200.png "switchpoint <= 200")
 
 
 
