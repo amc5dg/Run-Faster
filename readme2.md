@@ -68,4 +68,22 @@ Let's see what it looks like:
 
 Let's break down what we're looking at. At the upper left we see the distribution for his/her laps before they leveled up. And right below that plot we see the distribution of their level 2 times. And then below that we see the distribution of the when the switch occured. (To see a more technical breakdown see the <filename> file)  
 
+## Results
+
+![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/mean_difference.png "before and after")
+
+![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/number_of_laps.png "how many laps")
+
+![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/difference_100.png "difference <= 100")
+
+![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/how_much_100.png "how much faster <= 100")
+
+![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/how_much_faster.png "how much faster")
+
+![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/switchpoint_100.png "switchpoint <= 100")
+
+![alt text(https://github.com/amc5dg/Run-Faster/blob/master/images/switchpoint_200.png "switchpoint <= 200")
+
+
+
 
