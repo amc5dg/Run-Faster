@@ -70,10 +70,17 @@ Let's break down what we're looking at. At the upper left we see the distributio
 
 ## Results
 
+### The Runners
+
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/intro_plot.png "Introduction Graphs")
+
+### How long does it take to see changes?
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/switchpoints.png "Switchpoints")
 
+### How big were those changes?
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/howmuchfaster.png "Faster")
 
+
+## Further Considerations
 
