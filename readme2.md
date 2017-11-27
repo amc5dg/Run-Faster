@@ -3,10 +3,11 @@
 
 # AM I RUNNING FASTER?
 
-![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/Usain-Bolt3.jpg "Running Really Fast")
+![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/Usain-Bolt3.jpg "Running Really Fast") 
 
+For this project, I decided to look at how long it takes for the human body to adjust to running. I figured the simplest way to track running fitness was on a track because a track has a fixed distance and is flat. In addition, without having to worry about traffic, trail conditions, or starting and stopping, the runner gets to focus on the run rather than other environmental factors. 
 
-For those of us who want to increase our running fitness level, running on the track is a classic. A track is rubberized, flat, and comes in very specific sizes ie 400 meters. For my project I looked at runners' data from a 400 meter track to see how people's running fitness levels change over time. This project looks at whether having access to a 400 meter track in Kezar Stadium, San Francisco produces changes in a runners' fitness level.  
+The data used for this project comes from Strava, "the social network for athletes". Because people have to take the time to register on Strava, it is somewhat likely that these runners are interested in some level of fitness improvement rather than just fitness tracking. And since my aim is to determine when a runners' body has adapted to a higher level of running fitness, this makes an ideal place to find data. This data comes specifically from the Kezar Stadium track in Golden Gate Park, San Francisco. Since this is a professional sporting arena, the atmosphere might also give runners' some extra 'oompf' to go a little faster (see the top picture). 
 
 ## What does a change in my 'running fitness level' look like?
 
@@ -73,7 +74,7 @@ Let's break down what we're looking at. At the upper left we see the distributio
 ### The Runners
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/intro_plot.png "Introduction Graphs")
-We see that most runners are running less than 200 laps. I would say this makes sense as running on a track, when you're inside Gold Gate Park and have so much access to much more 'simulating' routes. Because of this, the analysis focuses on the runners who have run less than 200 laps.  
+We see that most runners are running less than 200 laps. I would say this makes sense as running on a track, when you're inside Gold Gate Park and have so much access to much more 'simulating' routes. Because of this, the analysis focuses on the runners who have run less than 200 laps.   
 
 ### How long does it take to see changes?
 
