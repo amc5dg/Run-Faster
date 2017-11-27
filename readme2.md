@@ -43,8 +43,8 @@ Here we specify a distribution for his/her split times. Since the times they can
 
 ```python
 with runner_model:  
-  early_mean = StudentT('early_mean',mu=600,sd=10,nu=5)
-  late_mean = StudentT('late_mean',mu=600,sd=10,nu=5)
+  early_mean = StudentT('early_mean',mu=250,sd=10,nu=5)
+  late_mean = StudentT('late_mean',mu=250,sd=10,nu=5)
 ```
 
 Next we set up the distribution (called 'times') of our runner for the MCMC to sample from:
@@ -70,20 +70,10 @@ Let's break down what we're looking at. At the upper left we see the distributio
 
 ## Results
 
-![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/mean_difference.png "before and after")
+![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/intro_plot.png "Introduction Graphs")
 
-![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/number_of_laps.png "how many laps")
+![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/switchpoints.png "Switchpoints")
 
-![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/difference_100.png "difference <= 100")
-
-![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/how_much_100.png "how much faster <= 100")
-
-![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/how_much_faster.png "how much faster")
-
-![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/switchpoint_100.png "switchpoint <= 100")
-
-![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/switchpoint_200.png "switchpoint <= 200")
-
-
+![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/howmuchfaster.png "Faster")
 
 
