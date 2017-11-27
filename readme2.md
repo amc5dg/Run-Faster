@@ -73,14 +73,19 @@ Let's break down what we're looking at. At the upper left we see the distributio
 ### The Runners
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/intro_plot.png "Introduction Graphs")
+We see that most runners are running less than 200 laps. I would say this makes sense as running on a track, when you're inside Gold Gate Park and have so much access to much more 'simulating' routes. Because of this, the analysis focuses on the runners who have run less than 200 laps.  
 
 ### How long does it take to see changes?
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/switchpoints.png "Switchpoints")
 
-### How big were those changes?
-![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/howmuchfaster.png "Faster")
+#### What does the data show?
+Looking at the graphs we see that the switchpoint is most likely to occur between 35 and 60 laps for people who have run less than 100 laps and less than 200 laps. This is a very important result in that for anyone running less than 200 laps, it only takes about 45 laps for someone's fitness level to change(see further considerations). This is a very pleasant result because it means that for someone starting to run laps, it won't take running hundreds of miles for him/her to see a noticeable change.
 
+### How big were those changes?
+
+![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/howmuchfaster.png "Faster")
+For those who saw a positive change in their fitness, we see that most runners were able to shave uo to 40 seconds off of thier mean lap times in only 35-60 laps (see further considerations). Note: this is also only for those who saw a decrease in their mean lap times
 
 ## Further Considerations
 
