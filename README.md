@@ -96,5 +96,11 @@ For those who saw a positive change in their fitness, we see that most runners w
 
 ## Further Considerations
 
-There are a few refinements that can be made to this project. 
+There are a few refinements that can be made to this project.  
+
+The first point that needs to be addressed is people getting slower. There are a few possibilities for why this may be: the runner started running with someone else who was slower, the runner got hurt and is gradually coming back, or the season changed and the runner slowed down. All of these are possibilities for why some runners might have gotten slower and warrant further exploration.
+
+The next important result that warrants discussion is data collection. As stated in the beginning, the data used for this project was an aggregation of all runners' data from a track in San Francisco. Ideally I would have liked to have used data from a track or running club going out for a workout or a race.
+
+The last important piece to discuss is the model's oversimplification. There is so much more to building fitness than just going out a running laps. For example, this model does not take into account how much other running the runner is doing. Consider two runners who each run 10 laps on the track each week. However; runner A runs only 10 laps a week and runner B runs 4 miles twice a week. It would be interesting to run further analysis and separate runners according to these other fitness factors such as total mileage logged per week, initial fitness condition, etc 
 
