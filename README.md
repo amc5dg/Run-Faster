@@ -17,7 +17,7 @@ Since we are probably feeling a little different each tie we go out for a run, i
 
 ## Building a Model     
 
-In order to detect a change in our running fitness level, we want to see if the distributions shifts after some number of laps. This is a Bayesian switchpoint detection problem and was done using Python's probabilitic programming library pymc3.
+In order to detect a change in our running fitness level, we want to see if the distributions shifts after some number of laps. This is a Bayesian MCMC switchpoint detection problem and was done using Python's probabilitic programming library pymc3.
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/pymc3.png "pymc3 logo")
 
@@ -25,11 +25,11 @@ Suppose a runner runs around the track 70 times and their lap times look like th
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/data_sim.png "sample data")
 
-It looks like the runners' times got noticable quicker after ~40 laps.
+It looks like the runner's times got noticable quicker after ~40 laps.
 
-Using this runner, let's set up a model.
+Using this, let's set up a model.
 
-We have three parameters that we are interest in:
+We have three parameters that we are interested in:
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/CodeCogsEqn%20(2).gif "equation 1")
 
@@ -42,7 +42,7 @@ with runner_model:
   switchpoint = DiscreteUniform('switchpoint',lower=0, upper=attempts)
 ```
 
-Here we specify a distribution for his/her split times. Since the times they can run is mostly likely normally distributed . However; since life happens when we are out running (like seeing a friend out and about and stopping to have a chat but forgetting that you're on the clock), there is a high likelihood that outliers may occur. So we fit the model with a Student T distribution instead to account for this:
+Here we specify a prior distribution for his/her split times. Here we assume that the runner's lap times are normally distributed. However; since life happens when we are out running: like seeing a friend out and about and stopping to have a chat but forgetting we're on the clock, there is a high likelihood that outliers may occur. So we fit the model with a Student T distribution instead to account for this:
 
 ```python
 with runner_model:  
@@ -50,14 +50,14 @@ with runner_model:
   late_mean = StudentT('late_mean',mu=250,sd=10,nu=5)
 ```
 
-Next we set up the distribution (called 'times') to sample from:
+Next we set up our update rule. We have our observed data, old paramteter values, and a new guess for the parameters. We want to calculate how likely is it that we observed our data given these new parameter estimates and the old estimates. If our observed data is more likely to have occured under the new parameter values, we update our guess of the parameter. Otherwise we keep the parameters unchanged. So for each step our model is given new estimates for 'switchpoint', 'early_mean', and 'late_mean' (captured in the 'rate' variable).
 
 ```python
 with runner_model: 
   rate = switch(switchpoint >= np.arange(attempts),early_mean,late_mean)
   times = StudentT('times',mu=rate,sd=10,nu=5,observed=data)
 ```
-And finally setting up the sampler. Note that we use MAP to set the initial locations of each chain.
+Here we set up the algorithm. The 'startvals' variable uses the MAP algorithm to choose an optimal starting point. The 'trace' variable is cumulative list of each update decison. Here we are making 10000 update decisions, 10 times (njobs = 10 argument). Each run of the algorithm is called a chain and multiple chains are run to assess model convergence and performance.
 
 ```python
 with runner_model:
