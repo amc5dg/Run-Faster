@@ -87,6 +87,9 @@ These results are only for those runners where the model performed well. This me
 #### What does the data show?
 Looking at the graphs we see that a shift is most likely to occur between 35 and 60 laps for people who have run less than 100 laps and less than 200 laps. This is a very interesting result because it only takes about 45 laps whether you run 100 or 200 laps. This is a very pleasant result because it means that for someone starting to run laps, it won't take running hundreds of miles for him/her to see a noticeable change.
 
+![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/fastslowswitchpoint.png "fast vs slow switchpoints")
+Here we see yet again that it doesn't matter how fast you are when you start running: it only takes about 40-70 laps for everyone to see a noticeable change in their fitness level.
+
 ### How big were those changes?
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/howmuchfaster.png "Faster")
