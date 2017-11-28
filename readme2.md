@@ -13,11 +13,11 @@ The data used for this project comes from Strava, "the social network for athlet
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/out%2Bof%2Bshape%2Bfunny.jpeg "Picture of Minion going to gym")
 
-Since we are probably feeling a little different each tie we go out for a run, it makes sense to think about our fitness level as a distribution. For example suppose you go out and run 5 laps on the track a few times a week. The first 10 sessions you might complete your laps in about 100 seconds each. But what about the next 10 sessions laps? The assumption is that the more laps you run (yes this is oversimplified), eventually your body will adapt and beome stronger. What this means is that the runner would see a shift in their distribution. 
+Since we are probably feeling a little different each tie we go out for a run, it makes sense to think about our fitness level as a distribution. For example suppose you go out and run 5 laps on the track a few times a week. The first 10 sessions you might complete your laps in about 100 seconds each. But what about the next 10 sessions? The assumption is that the more laps you run (yes this is oversimplified), eventually your body will adapt and beome stronger. What this means is that the runner would see a shift in their distribution. 
 
 ## Building a Model     
 
-In order to detect a change in our running fitness level, we want to see if the distributions shifts after some number of laps. This type of problem is called switchpoint detection. This was done using probabilistic programming with Python's pymc3 library.
+In order to detect a change in our running fitness level, we want to see if the distributions shifts after some number of laps. This is a Bayesian switchpoint detection problem and was done using Python's probabilitic programming library pymc3.
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/pymc3.png "pymc3 logo")
 
@@ -27,7 +27,7 @@ Suppose a runner runs around the track 70 times and their lap times look like th
 
 It looks like the runners' times got noticable quicker after ~40 laps.
 
-Using the above runner, let's set up our model.
+Using this runner, let's set up a model.
 
 We have three parameters that we are interest in:
 
@@ -50,7 +50,7 @@ with runner_model:
   late_mean = StudentT('late_mean',mu=250,sd=10,nu=5)
 ```
 
-Next we set up the distribution (called 'times') of our runner to sample from:
+Next we set up the distribution (called 'times') to sample from:
 
 ```python
 with runner_model: 
@@ -69,7 +69,7 @@ Let's see what it looks like:
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/data_sim_tr.png "sample traceplot")
 
-On the left are the distributions for our parameters (on the right are the values fo each parameter for each iteration for each chain)
+On the left are the distributions for each parameter (on the right are the values for each parameter for each iteration for each chain)
 
 ## Results
 
@@ -90,9 +90,10 @@ Looking at the graphs we see that a shift is most likely to occur between 35 and
 ### How big were those changes?
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/howmuchfaster.png "Faster")
-For those who saw a positive change in their fitness, we see that most runners were able to shave up to 40 seconds off. 
+For those who saw a positive change in their fitness, we see that most runners were able to shave up to 40 seconds off. We see again that the improvement does not depend on whether you have run 100 or 200 laps. This is consistent with switchpoint graphs, in that you don't need to be runnin hundreds of laps to see a very noticaeable improvement.  
 
 (Note: this is also only for those who saw a decrease in their mean lap times)
 
 ## Further Considerations
 
+There are a few refinements that can be made to this project. 
