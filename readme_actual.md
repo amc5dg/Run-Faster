@@ -1,30 +1,32 @@
 
-# Let's Go Run
-#### Using probabilistic programming to detect changes in runners' fitness levels
+## Let's Go Run:
+### Using probabilistic programming to detect changes in runners' fitness levels
 
-This project looks at how long it takes the human body to adjust to running. I figured the simplest way to measure this was to look at people running on a track. A track is flat and 400 meters long and in addition the runner doesn't have to worry about traffic, trail conditions, or starting and stopping at stoplights, etc.
+This project looks at how long it takes the human body to adjust to running. 
 
-## Table of Contents
+### Table of Contents
 * [Motivation](#motivation)
 * [Data](#data)
 * [Methodology](#building-the-model)
 * [Results](#results)
+* [Further Considerations](#further-considerations)
+* [Acknowledgements](#acknowledgements)
 
-## Motivation
+### Motivation
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/out%2Bof%2Bshape%2Bfunny.jpeg "Picture of Minion going to gym")
 
 Since we are probably feeling a little different each time we go out for a run, it makes sense to think about our fitness level as a distribution. For example suppose you go out and run 5 laps on the track a few times a week. The first 10 sessions you might complete your laps in about 100 seconds each. But what about the next 10 sessions? The assumption is that the more laps you run (yes this is oversimplified), eventually your body will adapt and beome stronger. What this means is that the runner would see a shift in their distribution.
 
-## Data
-The data used for this project comes from Strava, "the social network for athletes". Because people have to take the time to register on Strava, it is reasonable to assume that these runners are interested in some level of fitness improvement rather than just fitness tracking. 
+### Data
+The data used for this project comes from Strava, "the social network for athletes". Strava is a fitness tracking app that tracks an athletes running, cycling, swimming, and nordic skiing sessions in a way that promotes friendly competition by recording an athlete's times on popular segments. Because people have to take the time to register on Strava, it is reasonable to assume that these runners are interested in some level of fitness improvement rather than just fitness tracking. 
 
 I figured the simplest way to measure this was to look at people running on a track. A track is flat, only a quarter mile long, and the runner doesn't have to worry about traffic, trail conditions, or starting and stopping at stoplights, etc.
 This project looks at the Kezar Stadium track in Golden Gate Park, San Francisco. This track was chosen because of the high density of Strava running usage (determined from Strava's heatmap) and since this is a professional sporting arena, the atmosphere might also give runners some extra 'oompf' to go a little faster (see the below).
 
-![asdf](https://github.com/amc5dg/Run-Faster/blob/master/images/kezarstadium-small.jpg "Kezar Stadium Track)
+![asdf](https://github.com/amc5dg/Run-Faster/blob/master/images/kezarstadium-small.jpg "Kezar Stadium Track")
 
-## Building the Model     
+### Building the Model     
 
 In order to detect a change in our running fitness level, we want to see if the distributions shifts after some number of laps. This is a Bayesian MCMC switchpoint detection problem and was done using Python's probabilitic programming library pymc3.
 
@@ -42,7 +44,7 @@ We have three parameters that we are interested in:
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/CodeCogsEqn%20(2).gif "equation 1")
 
-Since we are using a MCMC framework we first need to create a rule to generate a new value for each parameter.
+Since we are using a MCMC framework we first need to create a rule to generate a new value for each parameter. First we generate a random time for the switchpoint to take place using a discrete uniform distribution. Next we generate values for the pre-switchpoint mean and post-switchpoint mean
 
 Here we randomly generate where the switchpoint might occur using a discrete uniform distribution:
 
@@ -65,33 +67,24 @@ Let's see what it looks like:
 
 On the left are the distributions for each parameter (on the right are the values for each parameter for each iteration for each chain)
 
-## Results
+### Results
 
-### The Runners
+#### The Runners
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/intro_plot.png "Introduction Graphs")
 We see that most runners are running less than 200 laps. Because of this, the analysis focuses on the runners who have run less than 200 laps. 
-
-These results are only for those runners where the model performed well. This means that the algorithm converged and had Gelman-Rubin scores of less than 1.7 for each parameter.
 
 ### How long does it take to see changes?
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/switchpoints.png "Switchpoints")
 
 #### What does the data show?
-Looking at the graphs we see that a shift is most likely to occur between 35 and 60 laps for people who have run less than 100 laps and less than 200 laps. This is a very interesting result because it only takes about 45 laps whether you run 100 or 200 laps. This is a very pleasant result because it means that for someone starting to run laps, it won't take running hundreds of miles for him/her to see a noticeable change.
+Looking at the graphs we see that a shift is most likely to occur between 35 and 60 laps for people who have run less than 100 laps AND 100-200 laps. This is a very interesting result because it only takes about 45 laps whether you run 100 or 200 laps. This is a very pleasant result because it means that for someone starting to run laps, it won't take running hundreds of miles for him/her to see a noticeable change.
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/fastslowswitchpoint.png "fast vs slow switchpoints")
 Here we see yet again that it doesn't matter how fast you are when you start running: it only takes about 40-70 laps for everyone to see a noticeable change in their fitness level.
 
-### How big were those changes?
-
-![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/howmuchfaster.png "Faster")
-For those who saw a positive change in their fitness, we see that most runners were able to shave up to 40 seconds off. We see again that the improvement does not depend on whether you have run 100 or 200 laps. This is consistent with switchpoint graphs, in that you don't need to be runnin hundreds of laps to see a very noticaeable improvement.  
-
-(Note: this is also only for those who saw a decrease in their mean lap times)
-
-## Further Considerations
+### Further Considerations
 
 There are a few refinements that can be made to this project.  
 
@@ -103,6 +96,20 @@ The last important piece to discuss is the model's oversimplification. There is 
 
 
 ### Acknowledgements
+
+First I want to say a huge thank-you to my instructors and fellow classmates at Galvanize.
+
+References that made my project possible:
+
+The code to get my data from the Strava API borrows heavily from [Ultramann's Github project Stravaboards](https://github.com/Ultramann/Stravaboards/blob/master/data_collection/segments_to_db.py)
+
+[Bayesian Methods for Hackers](https://github.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers)
+
+[The Metropolis-Hastings Algorithm](https://arxiv.org/pdf/1504.01896.pdf)
+
+LaTeX equation was made using CodeCogs
+
+
 
 
 
