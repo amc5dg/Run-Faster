@@ -1,27 +1,30 @@
 
+# Let's Go Run
+#### Using probabilistic programming to detect changes in runners' fitness levels
 
-
-# I am Faster: Using probabilistic programming to detect changes in runners' fitness levels
-
-For this project, I decided to look at how long it takes the human body to adjust to running. I figured the simplest way to measure this was to look at people running on a track. A track is flat and 400 meters long and in addition the runner doesn't have to worry about traffic, trail conditions, or starting and stopping at stoplights, etc.
+This project looks at how long it takes the human body to adjust to running. I figured the simplest way to measure this was to look at people running on a track. A track is flat and 400 meters long and in addition the runner doesn't have to worry about traffic, trail conditions, or starting and stopping at stoplights, etc.
 
 ## Table of Contents
-* [Motivation](#what-does-a-change-in-my-running-fitness-level-look-like)
+* [Motivation](#motivation)
 * [Data](#data)
 * [Methodology](#building-a-model)
 * [Results](#results)
 
-## Data
-The data used for this project comes from Strava, "the social network for athletes". Because people have to take the time to register on Strava, it is reasonable to assume that these runners are interested in some level of fitness improvement rather than just fitness tracking. And since my aim is to determine when a runners' body has adapted to a higher level of running fitness, this makes an ideal place to find data. This project looks at the Kezar Stadium track in Golden Gate Park, San Francisco. This track was chosen because of the high density of Strava running usage (determined from Strava's heatmap) and since this is a professional sporting arena, the atmosphere might also give runners some extra 'oompf' to go a little faster (see the top picture). 
-
-
-## What does a change in my running fitness level look like?
+## Motivation
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/out%2Bof%2Bshape%2Bfunny.jpeg "Picture of Minion going to gym")
 
-Since we are probably feeling a little different each time we go out for a run, it makes sense to think about our fitness level as a distribution. For example suppose you go out and run 5 laps on the track a few times a week. The first 10 sessions you might complete your laps in about 100 seconds each. But what about the next 10 sessions? The assumption is that the more laps you run (yes this is oversimplified), eventually your body will adapt and beome stronger. What this means is that the runner would see a shift in their distribution. 
+Since we are probably feeling a little different each time we go out for a run, it makes sense to think about our fitness level as a distribution. For example suppose you go out and run 5 laps on the track a few times a week. The first 10 sessions you might complete your laps in about 100 seconds each. But what about the next 10 sessions? The assumption is that the more laps you run (yes this is oversimplified), eventually your body will adapt and beome stronger. What this means is that the runner would see a shift in their distribution.
 
-## Building a Model     
+## Data
+The data used for this project comes from Strava, "the social network for athletes". Because people have to take the time to register on Strava, it is reasonable to assume that these runners are interested in some level of fitness improvement rather than just fitness tracking. 
+
+I figured the simplest way to measure this was to look at people running on a track. A track is flat, only a quarter mile long, and the runner doesn't have to worry about traffic, trail conditions, or starting and stopping at stoplights, etc.
+This project looks at the Kezar Stadium track in Golden Gate Park, San Francisco. This track was chosen because of the high density of Strava running usage (determined from Strava's heatmap) and since this is a professional sporting arena, the atmosphere might also give runners some extra 'oompf' to go a little faster (see the below).
+
+![asdf]()
+
+## Building the Model     
 
 In order to detect a change in our running fitness level, we want to see if the distributions shifts after some number of laps. This is a Bayesian MCMC switchpoint detection problem and was done using Python's probabilitic programming library pymc3.
 
@@ -97,5 +100,9 @@ The first point that needs to be addressed is people getting slower. There are a
 The next important result that warrants discussion is data collection. As stated in the beginning, the data used for this project was an aggregation of all runners' data from a track in San Francisco. Ideally I would have liked to have used data from a track or running club going out for a workout or a race.
 
 The last important piece to discuss is the model's oversimplification. There is so much more to building fitness than just going out a running laps. For example, this model does not take into account how much other running the runner is doing. Consider two runners who each run 10 laps on the track each week. However; runner A runs only 10 laps a week and runner B runs 4 miles twice a week. It would be interesting to run further analysis and separate runners according to these other fitness factors such as total mileage logged per week, initial fitness condition, etc 
+
+
+### Acknowledgements
+
 
 
