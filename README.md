@@ -25,7 +25,7 @@ Suppose a runner runs around the track 70 times and their lap times look like th
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/data_sim.png "sample data")
 
-It looks like the runner's times got noticable quicker after ~40 laps.
+It looks like the runner's times got noticable quicker after ~40 laps. We will call this the switchpoint.
 
 Using this, let's set up a model.
 
@@ -33,16 +33,16 @@ We have three parameters that we are interested in:
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/CodeCogsEqn%20(2).gif "equation 1")
 
-Since we are using a Bayesian framework we first need to assign a prior distribtion to each parameter.
+Since we are using a MCMC framework we first need to create a rule to generate a new value for each parameter.
 
-Here we randomly assign where his/her switchpoint might occur using a discrete uniform distribution:
+Here we randomly generate where the switchpoint might occur using a discrete uniform distribution:
 
 ```python
 with runner_model:
   switchpoint = DiscreteUniform('switchpoint',lower=0, upper=attempts)
 ```
 
-Here we specify a prior distribution for his/her split times. Here we assume that the runner's lap times are normally distributed. However; since life happens when we are out running: like seeing a friend out and about and stopping to have a chat but forgetting we're on the clock, there is a high likelihood that outliers may occur. So we fit the model with a Student T distribution instead to account for this:
+Here we specify the generator rule for the runner's split times. At first, we assume that the runner's lap times are normally distributed. However; since life happens when we are out running: suppose we see a friend stop to have a chat but forget we're on the clock, there is a high likelihood that outliers may occur. So the model uses a Student T distribution instead to account for this:
 
 ```python
 with runner_model:  
@@ -50,7 +50,7 @@ with runner_model:
   late_mean = StudentT('late_mean',mu=250,sd=10,nu=5)
 ```
 
-Next we set up our update rule. We have our observed data, old paramteter values, and a new guess for the parameters. We want to calculate how likely is it that we observed our data given these new parameter estimates and the old estimates. If our observed data is more likely to have occured under the new parameter values, we update our guess of the parameter. Otherwise we keep the parameters unchanged. So for each step our model is given new estimates for 'switchpoint', 'early_mean', and 'late_mean' (captured in the 'rate' variable).
+Next we set up our update rule. We have our observed data, previous paramteter values, and new values for the parameters. We want to calculate how likely is it that we observed our data given these new parameter estimates and the old estimates. If our observed data is more likely to have occured under the new parameter values, we update our guess of the parameter. Otherwise we keep the parameters unchanged. So for each step our model is given new estimates for 'switchpoint', 'early_mean', and 'late_mean' (captured in the 'rate' variable).
 
 ```python
 with runner_model: 
