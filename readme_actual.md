@@ -36,26 +36,15 @@ Suppose a runner runs around the track 70 times and their lap times look like th
 
 It looks like the runner's times got noticable quicker after ~40 laps. We will call this the switchpoint.
 
-Using this, let's set up a model.
-
 We have three parameters that we are interested in:
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/CodeCogsEqn%20(2).gif "equation 1")
 
-Since we are using a MCMC framework we first need to create a rule to generate a new value for each parameter. First we generate a random time for the switchpoint to take place using a discrete uniform distribution. Next we generate values for the pre-switchpoint mean and post-switchpoint mean
+Since we are using a MCMC framework we first need to create a rule to generate a new value for each parameter. First we generate a random time for the switchpoint to take place using a discrete uniform distribution. Next we generate values for the pre-switchpoint mean and post-switchpoint mean. Here we specify the generator rule for the runner's split times. At first, we assume that the runner's lap times are normally distributed. However; since life happens when we are out running: we see a friend, stop to have a chat, and forget we're on the clock, there is a high likelihood that outliers may occur. So the model uses a Student T distribution for each mean instead. 
 
-Here we randomly generate where the switchpoint might occur using a discrete uniform distribution:
+Next we set up the update rule. We have the observed data, previous paramteter values (stored internally), and a new set of values for the parameters. We want to calculate how likely is it that we observed our data given these new parameter estimates and the old estimates. If our observed data is more likely to have occured under the new parameter values, we update our guess of the parameter. Otherwise we keep the parameters unchanged. 
 
-
-
-Here we specify the generator rule for the runner's split times. At first, we assume that the runner's lap times are normally distributed. However; since life happens when we are out running: suppose we see a friend stop to have a chat but forget we're on the clock, there is a high likelihood that outliers may occur. So the model uses a Student T distribution instead to account for this:
-
-
-
-Next we set up our update rule. We have our observed data, previous paramteter values, and new values for the parameters. We want to calculate how likely is it that we observed our data given these new parameter estimates and the old estimates. If our observed data is more likely to have occured under the new parameter values, we update our guess of the parameter. Otherwise we keep the parameters unchanged. So for each step our model is given new estimates for 'switchpoint', 'early_mean', and 'late_mean' (captured in the 'rate' variable).
-
-
-Here we set up the algorithm. The 'startvals' variable uses the MAP algorithm to choose an optimal starting point. The 'trace' variable is cumulative list of each update decison. Here we are making 10000 update decisions, 10 times (njobs = 10 argument). Each run of the algorithm is called a chain and multiple chains are run to assess model convergence and performance.
+Here we set up the algorithm. The model uses the MAP algorithm to choose an optimal starting point. THe cumulative list of each update decison is called the trace. Here we are making 10000 update decisions, 10 times. Each run of the algorithm is called a chain and multiple chains (njobs=10) are run to assess model convergence and performance.
 
 Let's see what it looks like:
 
@@ -79,7 +68,7 @@ Looking at the graphs we see that a shift is most likely to occur between 35 and
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/fastslowswitchpoint.png "fast vs slow switchpoints")
 Here we see that it doesn't matter how fast you are when you start running: it only takes about 40-70 laps for ANYONE to see a noticeable change in their fitness level.
 
-(Plots were made using a jupyter notebook found [here](https://github.com/amc5dg/Run-Faster/blob/master/src/plotting.ipynb. And the code that was used for analysis can be found [here](https://github.com/amc5dg/Run-Faster/blob/master/src/building_model.py))
+(Plots were made using a jupyter notebook found [here](https://github.com/amc5dg/Run-Faster/blob/master/src/plotting.ipynb). And the code that was used for analysis can be found [here](https://github.com/amc5dg/Run-Faster/blob/master/src/building_model.py))
 
 ### Further Considerations
 
