@@ -5,10 +5,14 @@
 
 For this project, I decided to look at how long it takes the human body to adjust to running. I figured the simplest way to measure this was to look at people running on a track. A track is flat and 400 meters long and in addition the runner doesn't have to worry about traffic, trail conditions, or starting and stopping at stoplights, etc.
 
-The data used for this project comes from Strava, "the social network for athletes". Because people have to take the time to register on Strava, it is reasonable to assume that these runners are interested in some level of fitness improvement rather than just fitness tracking. And since my aim is to determine when a runners' body has adapted to a higher level of running fitness, this makes an ideal place to find data. This project looks at the Kezar Stadium track in Golden Gate Park, San Francisco. This track was chosen because of the high density of Strava running usage (determined from Strava's heatmap) and since this is a professional sporting arena, the atmosphere might also give runners some extra 'oompf' to go a little faster (see the top picture). 
-
 ## Table of Contents
 * [Motivation](#what-does-a-change-in-my-running-fitness-level-look-like)
+* [Data](#data)
+* [Methodology](#building-a-model)
+* [Results](#results)
+
+## Data
+The data used for this project comes from Strava, "the social network for athletes". Because people have to take the time to register on Strava, it is reasonable to assume that these runners are interested in some level of fitness improvement rather than just fitness tracking. And since my aim is to determine when a runners' body has adapted to a higher level of running fitness, this makes an ideal place to find data. This project looks at the Kezar Stadium track in Golden Gate Park, San Francisco. This track was chosen because of the high density of Strava running usage (determined from Strava's heatmap) and since this is a professional sporting arena, the atmosphere might also give runners some extra 'oompf' to go a little faster (see the top picture). 
 
 
 ## What does a change in my running fitness level look like?
