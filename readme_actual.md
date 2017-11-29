@@ -30,8 +30,6 @@ This project looks at the Kezar Stadium track in Golden Gate Park, San Francisco
 
 In order to detect a change in our running fitness level, we want to see if the distributions shifts after some number of laps. This is a Bayesian MCMC switchpoint detection problem and was done using Python's probabilitic programming library pymc3.
 
-![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/pymc3.png "pymc3 logo")
-
 Suppose a runner runs around the track 70 times and their lap times look like this:
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/data_sim.png "sample data")
@@ -59,30 +57,29 @@ Next we set up our update rule. We have our observed data, previous paramteter v
 
 Here we set up the algorithm. The 'startvals' variable uses the MAP algorithm to choose an optimal starting point. The 'trace' variable is cumulative list of each update decison. Here we are making 10000 update decisions, 10 times (njobs = 10 argument). Each run of the algorithm is called a chain and multiple chains are run to assess model convergence and performance.
 
-
-
 Let's see what it looks like:
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/data_sim_tr.png "sample traceplot")
 
 On the left are the distributions for each parameter (on the right are the values for each parameter for each iteration for each chain)
 
+(The code used to produce these graphs can be found [here](https://github.com/amc5dg/Run-Faster/blob/master/src/runner_test.py))
+
 ### Results
-
-#### The Runners
-
-![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/intro_plot.png "Introduction Graphs")
-We see that most runners are running less than 200 laps. Because of this, the analysis focuses on the runners who have run less than 200 laps. 
 
 ### How long does it take to see changes?
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/switchpoints.png "Switchpoints")
 
 #### What does the data show?
-Looking at the graphs we see that a shift is most likely to occur between 35 and 60 laps for people who have run less than 100 laps AND 100-200 laps. This is a very interesting result because it only takes about 45 laps whether you run 100 or 200 laps. This is a very pleasant result because it means that for someone starting to run laps, it won't take running hundreds of miles for him/her to see a noticeable change.
+Looking at the graphs we see that a shift is most likely to occur between 35 and 60 laps for people who have run less than 100 laps AND 100-200 laps. This is a very interesting result because it only takes about 45 laps to see a change whether you run 100 or 200 laps.
+
+(Most runners were running less than 200 laps. Because of this, the analysis focused on runners who had run less than 200 laps)
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/fastslowswitchpoint.png "fast vs slow switchpoints")
-Here we see yet again that it doesn't matter how fast you are when you start running: it only takes about 40-70 laps for everyone to see a noticeable change in their fitness level.
+Here we see that it doesn't matter how fast you are when you start running: it only takes about 40-70 laps for ANYONE to see a noticeable change in their fitness level.
+
+(Plots were made using a jupyter notebook found [here](https://github.com/amc5dg/Run-Faster/blob/master/src/plotting.ipynb. And the code that was used for analysis can be found [here](https://github.com/amc5dg/Run-Faster/blob/master/src/building_model.py))
 
 ### Further Considerations
 
@@ -101,14 +98,15 @@ First I want to say a huge thank-you to my instructors and fellow classmates at 
 
 References that made my project possible:
 
-The code to get my data from the Strava API borrows heavily from [Ultramann's Github project Stravaboards](https://github.com/Ultramann/Stravaboards/blob/master/data_collection/segments_to_db.py)
+* The code to get my data from the Strava API borrows heavily from [Ultramann's Github project Stravaboards](https://github.com/Ultramann/Stravaboards/blob/master/data_collection/segments_to_db.py)
 
-[Bayesian Methods for Hackers](https://github.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers)
+* [Bayesian Methods for Hackers](https://github.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers)
 
-[The Metropolis-Hastings Algorithm](https://arxiv.org/pdf/1504.01896.pdf)
+* [The Metropolis-Hastings Algorithm](https://arxiv.org/pdf/1504.01896.pdf)
 
 LaTeX equation was made using CodeCogs
 
+A huge thanks goes out to Strava having their data open to the public; without which, this project would not have happened.
 
 
 
