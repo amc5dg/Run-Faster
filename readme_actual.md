@@ -7,7 +7,7 @@ This project looks at how long it takes the human body to adjust to running. I f
 ## Table of Contents
 * [Motivation](#motivation)
 * [Data](#data)
-* [Methodology](#building-a-model)
+* [Methodology](#building-the-model)
 * [Results](#results)
 
 ## Motivation
@@ -22,7 +22,7 @@ The data used for this project comes from Strava, "the social network for athlet
 I figured the simplest way to measure this was to look at people running on a track. A track is flat, only a quarter mile long, and the runner doesn't have to worry about traffic, trail conditions, or starting and stopping at stoplights, etc.
 This project looks at the Kezar Stadium track in Golden Gate Park, San Francisco. This track was chosen because of the high density of Strava running usage (determined from Strava's heatmap) and since this is a professional sporting arena, the atmosphere might also give runners some extra 'oompf' to go a little faster (see the below).
 
-![asdf]()
+![asdf](https://github.com/amc5dg/Run-Faster/blob/master/images/kezarstadium-small.jpg "Kezar Stadium Track)
 
 ## Building the Model     
 
