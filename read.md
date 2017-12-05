@@ -64,7 +64,7 @@ Some filtering of runners was done. First, any runner who ran less than 50 laps 
 
 (Most runners were running less than 200 laps. Because of this, the analysis focused on runners who had run less than 200 laps)
 
-![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/fastslowswitchpoint.png "fast vs slow switchpoints")
+![](https://github.com/amc5dg/Run-Faster/blob/master/images/duration_improvement.png "results")
 
 (Plots were made using a jupyter notebook found [here](https://github.com/amc5dg/Run-Faster/blob/master/src/plotting.ipynb). And the code that was used for analysis can be found [here](https://github.com/amc5dg/Run-Faster/blob/master/src/building_model.py))
 
