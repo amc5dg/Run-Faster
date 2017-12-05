@@ -39,13 +39,14 @@ Suppose a runner runs around the track 70 times and their lap times look like th
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/data_sim.png "sample data")
 
+(The code used to produce this graph can be found [here](https://github.com/amc5dg/Run-Faster/blob/master/src/runner_test.py))
+
+
 It looks like the runner's times got noticable quicker after ~40 laps. We will call this the switchpoint.
 
 Because I am using probabilistic programming, I can build a custom model to detect switchpoints given any parameterization. There were 3 parameters that were of interest to this problem:
 
 ![alt text](https://github.com/amc5dg/Run-Faster/blob/master/images/CodeCogsEqn%20(2).gif "equation 1")
-
-(The code used to produce this graph can be found [here](https://github.com/amc5dg/Run-Faster/blob/master/src/runner_test.py))
 
 
 Because lap times are most likely normally distributed, a normal prior for early_mean and late_mean was initially used. However; after looking at the noisiness of the data and poor model performance, a T distribution was assigned to give the model more flexibility. Since the switchpoint could happen after any number of laps, a discrete uniform was used as the prior for the switchoint distribution. 
