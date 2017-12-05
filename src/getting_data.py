@@ -72,7 +72,9 @@ class RunFreeData(object):
                 self.get_athletes_who_attempted_segment()
                 continue
         self.last_page = self.lp_dic
-
+        
+        # saving the model data
+        
         with open('a2.pkl','wb') as f:
             pickle.dump(self.a_list,f)
         with open('t2.pkl','wb') as f:
@@ -127,7 +129,8 @@ class RunFreeData(object):
         self.d_list.append(self.dates)
 
 if __name__ == '__main__':
-
+    
+    # Searching for good data
     crissy = '37.803641,-122.473825,37.807155,-122.447496'
     ggp = '37.763199,-122.511097,37.775297,-122.453977'
     embarc = '37.790310,-122.422348,37.812338,-122.401405'
@@ -139,32 +142,11 @@ if __name__ == '__main__':
     ninja_loop = '37.828716, -122.524130,37.868504,-122.514860'
     northside_loop = '37.916160,-122.610261,37.936035,-122.567689'
 
-
-    # From Crissy
-
-    # flat 400m road
-    f_400_r_c = 851417
-
-    # flat 800m road
-    f_800_r_c = 7317796
-
-    # flat 1 mi road
-    f_1mi_r_c = 15208269
-
-    # flat 5k road
-    f_5k_r_c = 13103830
-
-    # From Golden Gate Park
-
     # track 400m
     t_400_ggp = 630725
 
     # xc course 800m
     f_800_xc = 8525023
-
-
-    segments = [f_400_r_c,f_800_r_c,f_1mi_r_c,f_5k_r_c,t_400_ggp,f_800_xc]
-
 
     running = RunFreeData()
     bounds = northside_loop
